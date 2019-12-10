@@ -36,9 +36,18 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            // Para que no se repita el nombre de los archivos le aplico la hora de la fecha
+            // actual y de ésta manera cada archivo va a tener nombre único.
+            $name = time().$file->getClientOriginalName();
+            // Muevo el archivo a una carpeta dentro del proyecto asignandole el nombre modificado
+            $file->move(public_path().'/images/', $name);
+        }
         $character = new Character();
         $character->charactername = $request->input('charactername');
         $character->serieorfilm = $request->input('serieorfilm');
+        $character->image = $name;
         $character->save();
         return 'Saved Successfully';
     }
