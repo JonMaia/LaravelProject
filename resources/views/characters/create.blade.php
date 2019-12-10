@@ -1,19 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Characters Create')
+@section('title', 'Crear Personaje')
 
 @section('content')
-<form method="POST" action="/characters" class="form-group">
+<form method="POST" action="/characters" class="form-group" enctype="multipart/form-data">
     @csrf 
-    <div class="form-group">
-        <label for="">Nombre del Personaje</label>
-        <input type="text" class="form-control" name="charactername">
-    </div>
-    <div class="form-group">
-        <label for="">Serie/Película</label>
-        <input type="text" class="form-control" name="serieorfilm">
-    </div>
-
+    @component('layouts.components.create.inputname')
+    @endcomponent
+    @component('layouts.components.create.inputserieorfilm')
+    @endcomponent
+    @component('layouts.components.create.inputimage')        
+    @endcomponent
     <button type="submit" class="btn btn-primary">Guardar</button>            
 </form>
 @endsection
