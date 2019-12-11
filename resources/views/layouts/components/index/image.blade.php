@@ -1,5 +1,5 @@
 <img class="card-img-top rounded-circle mx-auto display-1 mt-4 mb-3"
-     src="images/{{$character->image}}">
+     src="/images/{{$character->image}}">
 
 <style>
 .card-img-top {
